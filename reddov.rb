@@ -14,10 +14,10 @@ end
 
 get '/' do
   # response['Cache-Control'] = 'public, max-age=5'
-  cache 'cache1', :expiry => 5 do
+  # cache 'cache1', :expiry => 5 do
     @markoved_headlines = markoved_headlines
     erubis :index
-  end
+  # end
 end
 
 
