@@ -4,20 +4,20 @@ require 'erubis'
 require 'json'
 require 'open-uri'
 require './lib/markov.rb'
-# require 'dalli'
-# require './lib/cache.rb'
+require 'dalli'
+require './lib/cache.rb'
 
-# set :cache, Dalli::Client.new
+set :cache, Dalli::Client.new
 
 configure :production do
 end
 
 get '/' do
-  # cache 'cache1', :expiry => 5 do
-    response['Cache-Control'] = 'public, max-age=5'
+  cache 'cache1', :expiry => 5 do
+    # response['Cache-Control'] = 'public, max-age=5'
     @markoved_headlines = markoved_headlines
     erubis :index
-  # end
+  end
 end
 
 
