@@ -23,10 +23,10 @@ get '/' do
   # Three seconds about does it. It's the difference
   # between ~200 requests per second and 6
   
-  cache 'cache1', :expiry => 2 do
+  # cache 'cache1', :expiry => 2 do
     @markoved_headlines = markoved_headlines
     erubis :index
-  end
+  # end
 end
 
 
