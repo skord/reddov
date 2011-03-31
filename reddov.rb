@@ -7,7 +7,7 @@ require './lib/markov.rb'
 # require 'dalli'
 # require './lib/cache.rb'
 
-set :cache, Dalli::Client.new
+# set :cache, Dalli::Client.new
 
 configure :production do
 end
