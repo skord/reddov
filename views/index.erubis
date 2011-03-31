@@ -32,7 +32,7 @@
     <% @markoved_headlines.each do |headline| %>
 
     <div class="thing even odd link">
-      <p class="parent"></p><span style="width:2.20ex;" class="rank">5</span>
+      <p class="parent"></p><span style="width:2.20ex;" class="rank"><%= headline[:position] + 1%></span>
       <div style="width:5ex;" class="midcol unvoted">
         <div class="arrow up"></div>
         <div class="score likes">
