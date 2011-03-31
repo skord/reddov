@@ -3,7 +3,10 @@ require 'sinatra'
 require 'erubis'
 require 'json'
 require 'open-uri'
-require 'lib/markov.rb'
+require './lib/markov.rb'
+require 'dalli'
+
+set :cache, Dalli::Client.new
 
 configure :production do
 end
@@ -15,9 +18,14 @@ end
 
 
 def reddit_json
-  # 100 items because the pool needs to be sort of large
   reddit_json_uri = 'http://www.reddit.com/.json?count=100'
-  @reddit_json ||= JSON.parse(open(reddit_json_uri).read)
+  @reddit_json_data = settings.cache.get('reddit_json')
+  if @reddit_json_data.nil?
+    settings.cache.set('reddit_json', JSON.parse(open(reddit_json_uri).read), ttl = 30)
+    return settings.cache.get('reddit_json')
+  else
+    return @reddit_json_data
+  end
 end
 
 def headlines
@@ -34,7 +42,7 @@ end
 
 def markoved_headlines
   random_headlines = []
-  m = MarkovNameGenerator::new(100, 3)
+  m = MarkovNameGenerator::new(100, 4)
   headlines.each do |headline|
     m.input(headline)
   end
