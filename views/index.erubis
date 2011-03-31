@@ -14,6 +14,14 @@
             <a href="http://www.reddit.com/">Go To Actual Reddit...</a>
           </li>
         </ul>
+        <span class="separator">&nbsp;|&nbsp;</span>
+        <ul id="sr-bar" class="flat-list sr-bar hover">
+          <li><a href="http://www.reddit.com/user/skord/">I-N-C-E-P-T-I-O-N by...</a></li>
+        </ul>
+        <span class="separator">&nbsp;|&nbsp;</span>
+        <ul id="sr-bar" class="flat-list sr-bar hover">
+          <li><a href="http://www.reddit.com/gold">Reddit Gold?</a></li>
+        </ul>
       </div>
       <div id="header-bottom-left">
         <a id='header-img-a' href="/">
