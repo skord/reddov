@@ -36,7 +36,7 @@ end
 
 def fetch_and_cache_reddit_json
   # Cache the reddit stuff. We don't need it that often for fun.
-  reddit_json_uri = 'http://www.reddit.com/.json?count=100'
+  reddit_json_uri = 'http://www.reddit.com/.json?count=200'
   cached_reddit_json = settings.cache.get('reddit_json')
   if cached_reddit_json.nil? 
     parsed_json = JSON.parse(open(reddit_json_uri).read)
