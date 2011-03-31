@@ -4,7 +4,8 @@ require 'erubis'
 require 'json'
 require 'open-uri'
 require './lib/markov.rb'
-require 'dalli'
+# require 'dalli'
+# require './lib/cache.rb'
 
 set :cache, Dalli::Client.new
 
@@ -12,20 +13,17 @@ configure :production do
 end
 
 get '/' do
-  @markoved_headlines = markoved_headlines
-  erubis :index
+  # cache 'cache1', :expiry => 5 do
+    response['Cache-Control'] = 'public, max-age=5'
+    @markoved_headlines = markoved_headlines
+    erubis :index
+  # end
 end
 
 
 def reddit_json
   reddit_json_uri = 'http://www.reddit.com/.json?count=100'
-  @reddit_json_data = settings.cache.get('reddit_json')
-  if @reddit_json_data.nil?
-    settings.cache.set('reddit_json', JSON.parse(open(reddit_json_uri).read), ttl = 30)
-    return settings.cache.get('reddit_json')
-  else
-    return @reddit_json_data
-  end
+  reddit_json_data = JSON.parse(open(reddit_json_uri).read)
 end
 
 def headlines
