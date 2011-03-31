@@ -13,7 +13,7 @@ configure :production do
 end
 
 get '/' do
-  response['Cache-Control'] = 'public, max-age=20'
+  # response['Cache-Control'] = 'public, max-age=20'
   #
   # Caching for something rediculously small. 
   # It should give the appearance of hitting refresh
