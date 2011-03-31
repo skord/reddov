@@ -15,7 +15,8 @@ end
 
 
 def reddit_json
-  reddit_json_uri = 'http://www.reddit.com/.json?count=50'
+  # 100 items because the pool needs to be sort of large
+  reddit_json_uri = 'http://www.reddit.com/.json?count=100'
   @reddit_json ||= JSON.parse(open(reddit_json_uri).read)
 end
 
@@ -33,7 +34,7 @@ end
 
 def markoved_headlines
   random_headlines = []
-  m = MarkovNameGenerator::new(100, 4)
+  m = MarkovNameGenerator::new(100, 3)
   headlines.each do |headline|
     m.input(headline)
   end
