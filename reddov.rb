@@ -13,8 +13,8 @@ configure :production do
 end
 
 get '/' do
+  # response['Cache-Control'] = 'public, max-age=5'
   cache 'cache1', :expiry => 5 do
-    # response['Cache-Control'] = 'public, max-age=5'
     @markoved_headlines = markoved_headlines
     erubis :index
   end
@@ -22,8 +22,16 @@ end
 
 
 def reddit_json
+  # Cache the reddit stuff. We don't need it that often for fun.
   reddit_json_uri = 'http://www.reddit.com/.json?count=100'
-  reddit_json_data = JSON.parse(open(reddit_json_uri).read)
+  cached_reddit_json = settings.cache.get('reddit_json')
+  if cached_reddit_json.nil? 
+    parsed_json = JSON.parse(open(reddit_json_uri).read)
+    settings.cache.set('reddit_json', parsed_json, ttl = 300)
+    return parsed_json
+  else
+    return cached_reddit_json
+  end
 end
 
 def headlines
