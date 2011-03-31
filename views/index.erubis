@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+  <head>
+	  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  <title>index.html</title>
+	  <link rel="stylesheet" type="text/css" href="reddov.css" />
+	  </head>
+  <body>
+    <div id="header">
+      <div id="sr-header-area">
+        <ul class="flat-list sr-bar hover">
+          <li>
+            <a href="http://www.reddit.com/">Go To Actual Reddit...</a>
+          </li>
+        </ul>
+      </div>
+      <div id="header-bottom-left">
+        <a id='header-img-a' href="/">
+          <h1>Reddov</h1>
+        </a>
+        <ul class="tabmenu">
+          <li class="selected">
+            <a href="/">what's hot</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  <div class= "content" >
+    <div id="siteTable" class="sitetable linklisting">
+
+    <% @markoved_headlines.each do |headline| %>
+
+    <div class="thing even odd link">
+      <p class="parent"></p><span style="width:2.20ex;" class="rank">5</span>
+      <div style="width:5ex;" class="midcol unvoted">
+        <div class="arrow up"></div>
+        <div class="score likes">
+          •
+        </div>
+        <div class="score unvoted">
+          •
+        </div>
+        <div class="score dislikes">
+          •
+        </div>
+        <div class="arrow down"></div>
+      </div>
+      <div class="entry unvoted">
+        <p class="title">
+          <a href="#" class="title click"><%= headline[:title] %></a> <span class="domain">(<a href="#">i.imgur.com</a>)</span>
+        </p>
+        <p class="tagline">
+          submitted 1 hour ago by <a class="author" href="#"><%= headline[:author] %></a> to <a class="subreddit hover" href="#">reddov</a>
+        </p>
+        <ul class="flat-list buttons">
+          <li class="first">
+            <a target="_parent" href="#" class="comments"><%= rand(100) %> comments</a>
+          </li>
+          <li class="share">
+            <span style="" class="share-button toggle"><a tabindex="100" href="#" class="option active">share</a><a href="#" class="option">cancel</a></span>
+          </li>
+        </ul>
+        <div style="display: none" class="expando">
+          <span class="error">loading...</span>
+        </div>
+      </div>
+      <div class="child"></div>
+      <div class="clearleft">
+        <!--IE6sux-->
+      </div>
+    </div>
+
+    <% end %>
+
+
+
+
+    </div>
+  </div>
+  </body>
+</html>
