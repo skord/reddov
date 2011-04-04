@@ -61,6 +61,7 @@ end
 
 def markoved_headlines
   random_headlines = []
+  random_titles = []
   m = MarkovNameGenerator::new(100, 5)
   i = 0
   headlines.each do |headline|
@@ -68,7 +69,8 @@ def markoved_headlines
   end
   until random_headlines.length == 15
     random_title = m.name
-    unless headlines.include?(random_title) || random_headlines.include?(random_title)
+    unless headlines.include?(random_title) || random_titles.include?(random_title)
+      random_titles << random_title
       random_headlines << {:title => random_title, :position => i, :author => random_redditor}
       i += 1
     end
