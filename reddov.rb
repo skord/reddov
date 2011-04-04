@@ -63,7 +63,7 @@ end
 
 def markoved_headlines
   random_headlines = []
-  m = MarkovNameGenerator::new(100, 4)
+  m = MarkovNameGenerator::new(100, 5)
   headlines.each do |headline|
     m.input(headline)
   end
