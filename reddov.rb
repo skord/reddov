@@ -41,10 +41,8 @@ def fetch_and_cache_reddit_json
   if cached_reddit_json.nil? 
     parsed_json = JSON.parse(open(reddit_json_uri).read)
     settings.cache.set('reddit_json', parsed_json, ttl = 300)
-    puts "set"
     return parsed_json
   else
-    puts 'get'
     return cached_reddit_json
   end
 end
