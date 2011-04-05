@@ -3,9 +3,9 @@ require 'sinatra'
 require 'erubis'
 require 'json'
 require 'open-uri'
-require './lib/markov.rb'
+require 'lib/markov.rb'
 require 'dalli'
-require './lib/cache.rb'
+require 'lib/cache.rb'
 
 set :cache, Dalli::Client.new
 
@@ -13,8 +13,7 @@ configure :production do
 end
 
 get '/' do
-  response['Cache-Control'] = 'public, max-age=2'
-  #
+
   # Caching for something rediculously small. 
   # It should give the appearance of hitting refresh
   # and getting a new page, but the folks will be
