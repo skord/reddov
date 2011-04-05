@@ -1,0 +1,3 @@
+A small sinatra app that pulls headlines from reddit, 
+runs them through a markov chain, and acts as a fake 
+reddit.
