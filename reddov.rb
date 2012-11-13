@@ -3,9 +3,9 @@ require 'sinatra'
 require 'erubis'
 require 'json'
 require 'open-uri'
-require 'lib/markov.rb'
+require './lib/markov.rb'
 require 'dalli'
-require 'lib/cache.rb'
+require './lib/cache.rb'
 
 set :cache, Dalli::Client.new
 
