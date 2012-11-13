@@ -22,6 +22,7 @@
         <ul id="sr-bar" class="flat-list sr-bar hover">
           <li><a href="http://www.reddit.com/gold">Reddit Gold?</a></li>
         </ul>
+        <span class="separator">&nbsp;|&nbsp;</span>
         <ul id="sr-bar" class="flat-list sr-bar hover">
           <li><a href="https://github.com/skord/reddov">Fork on Github</a></li>
         </ul>
