@@ -1,4 +1,4 @@
-require './reddov.rb'
+require 'reddov.rb'
 
 run Sinatra::Application
 
